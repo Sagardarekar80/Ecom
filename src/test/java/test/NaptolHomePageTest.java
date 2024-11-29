@@ -10,6 +10,7 @@ import junit.framework.Assert;
 import pojo.Browser;
 import pom.NaptolHomePage;
 
+
 public class NaptolHomePageTest extends BaseTest {
 
 	@BeforeMethod
@@ -24,9 +25,9 @@ public class NaptolHomePageTest extends BaseTest {
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
-		String SearchResult = naptolHomePage.getSearchResultText();
-		
-		
+		String searchResult = naptolHomePage.getSearchResultText();
+		double searchCount = Double.parseDouble(searchResult)	;
+		Assert.assertTrue(searchCount>0);				
 	}
 	
 	
@@ -36,12 +37,27 @@ public class NaptolHomePageTest extends BaseTest {
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterInvalidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
-		String SearchResult = naptolHomePage.getSearchResultText();
-		
-		Assert.assertEquals("Search Results For : IPhone",SearchResult);
+		String searchResult = naptolHomePage.getSearchResultText();
+		double searchCount = Double.parseDouble(searchResult);									
+		Assert.assertTrue(searchCount==0);								
 	}
 	
+	@Test
+	public void verifyOnClickingShoppingCategories()
+	{
+		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
+		naptolHomePage.moveToShoppingCategories(driver);
+		 Assert.assertTrue(naptolHomePage.verifyingShoppingcategoriesMenu());
+	}
 	
+	@Test
+	public void VerifyIfProdutDetailsAreCorrcetIfViewInQuickView() throws EncryptedDocumentException, IOException
+	{
+		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
+		naptolHomePage.enterValidProductNameForSearch();
+		naptolHomePage.clickOnSearchButton();		
+		naptolHomePage.clickOnQuickView(0);
+	}
 	
 	
 }

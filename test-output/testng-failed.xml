@@ -6,7 +6,7 @@
       <class name="test.NaptolHomePageTest">
         <methods>
           <include name="launchApplication"/>
-          <include name="searchAValidProduct"/>
+          <include name="VerifyIfProdutDetailsAreCorrcetIfViewInQuickView"/>
         </methods>
       </class> <!-- test.NaptolHomePageTest -->
     </classes>
