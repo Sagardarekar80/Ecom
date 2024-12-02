@@ -1,19 +1,25 @@
-package test;
+package pom;
 
 import java.util.Iterator;
 import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
+public class BaseClass {
 
-public class BaseTest {
-
-	public static WebDriver driver;
-	public static ExtentReports reports;
-	public static ExtentTest test;
-	
+	public String removeComaFromString(String s)
+	{
+		String c = "";
+		for(int i=0;i<s.length();i++)
+		{
+			
+			if(s.charAt(i)!=',')
+			{
+				c = c+s.charAt(i);
+			}
+		}		
+		return c;	
+	}
 	
 	
 	public String openChildBrowser(WebDriver driver)
@@ -29,5 +35,10 @@ public class BaseTest {
 		}
 		return title;
 	}
+	
+	
+	
+	
 }
+
 

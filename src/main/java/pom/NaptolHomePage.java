@@ -9,13 +9,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import utility.ActionsPro;
 import utility.Parameterization;
 
 
-public class NaptolHomePage  {
-
+public class NaptolHomePage extends BaseClass  {
 	
 	@FindBy(xpath = "//input[@id='header_search_text']") private WebElement SearchBox;
 	@FindBy(xpath = "(//a[@href='javascript:autoSuggestion.headerSearch()'])[2]")private WebElement SearchButton;
@@ -24,7 +21,9 @@ public class NaptolHomePage  {
 	@FindBy(xpath = "//div[@id='mainMenuContent']") private WebElement ShoppingCategoriesList;
 	@FindBy(xpath = "//div[@class='item_title']") private List <WebElement> ProductNameList;
 	@FindBy(xpath = "//a[@class='bt_compare icon chat quickFancyBox']") private List <WebElement> QuckViewBtm;
-	
+	@FindBy(xpath = "//section[@id='quickViewBox']") private WebElement QuickViewPopUp;
+	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
+	@FindBy(xpath = "//div[@id='productItem2']") private WebElement Product;
 	
 	public NaptolHomePage(WebDriver driver)
 	{
@@ -32,9 +31,7 @@ public class NaptolHomePage  {
 	}
 
 	public void enterValidProductNameForSearch() throws EncryptedDocumentException, IOException
-	{
-		Parameterization pm = new Parameterization();
-		 
+	{	 
 		SearchBox.sendKeys(Parameterization.getStringData("Sheet1", 0, 0));		
 	}
 	
@@ -43,8 +40,7 @@ public class NaptolHomePage  {
 			 
 		SearchBox.sendKeys(Parameterization.getStringData("Sheet1", 1, 0));		
 	}
-		
-	
+			
 	public void clickOnSearchButton()
 	{
 		SearchButton.click();
@@ -54,23 +50,33 @@ public class NaptolHomePage  {
 	{
 		return SearchResult.getText();
 	}
-	
-	
+		// change
 	public void moveToShoppingCategories(WebDriver driver)
 	{			
-		ActionsPro.ActionClass(driver,ShoppingCategories);	
+		Actions act = new Actions(driver);
+		act.moveToElement(ShoppingCategories);
+		act.perform();
 	}
 	
+	//29-11-2024 Change
+	public void moveToQuickView(WebDriver driver) 
+	{			
+		Actions act = new Actions(driver);
+		act.moveToElement(QuckViewBtm.get(0));
+		act.perform();
+	}
+		
 	public boolean verifyingShoppingcategoriesMenu()
 	{
 		boolean isShoppingCategoriesListDisplayedOrNot = ShoppingCategoriesList.isDisplayed();
 		return isShoppingCategoriesListDisplayedOrNot;
 	}
-	
-	
-	public void clickOnQuickView(int index)
+		
+	public boolean clickOnQuickView(int index)
 	{
 		QuckViewBtm.get(index).click();
+		return QuickViewPopUp.isDisplayed();
+		
 	}
 		
 	public String getProductName(int index)
@@ -79,5 +85,26 @@ public class NaptolHomePage  {
 		return productName;
 	}
 	
+	public void moveToProduct(WebDriver driver, int index)
+	{
+		Actions act = new Actions(driver);
+		act.moveToElement(ProductNameList.get(index));
+		act.perform();
+	}
+	
+	public double getProductPrice(int index)
+	{
+		String [] a = ProductPriceList.get(index).getText().split(" ");
+		return Double.parseDouble(removeComaFromString(a[0]));	
+	}
+	
+	public String clickOnProduct(WebDriver driver)
+	{
+		Product.click();
+		return openChildBrowser(driver);
+		
+	}
 
+	
+	
 }
