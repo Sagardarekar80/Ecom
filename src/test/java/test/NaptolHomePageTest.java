@@ -97,4 +97,8 @@ public class NaptolHomePageTest extends BaseTest  {
 		Assert.assertEquals(ProductName, ChildBrowserProductName);
 		Assert.assertEquals(ProductPrice, ChildBrowserProductPrice);
 	}
+	
+	
+	
+	
 }

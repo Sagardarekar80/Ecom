@@ -25,6 +25,7 @@ public class NaptolHomePage extends BaseClass  {
 	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
 	@FindBy(xpath = "//div[@id='productItem2']") private WebElement Product;
 	
+	
 	public NaptolHomePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);	

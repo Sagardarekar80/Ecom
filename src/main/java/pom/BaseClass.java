@@ -22,6 +22,28 @@ public class BaseClass {
 	}
 	
 	
+	public String removeBracesFromString(String s)
+	{
+		String c = "";
+		
+		for(int i=0;i<s.length();i++)
+		{
+			
+			if(s.charAt(i)!='(' && s.charAt(i)!=')')
+			{
+				
+				c = c+s.charAt(i);
+				
+			}
+		
+		}		
+		
+		return c;	
+	}
+	
+	
+	
+	
 	public String openChildBrowser(WebDriver driver)
 	{
 		Set<String> handles =driver.getWindowHandles();		

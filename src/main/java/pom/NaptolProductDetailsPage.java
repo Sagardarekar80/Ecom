@@ -11,7 +11,10 @@ public class NaptolProductDetailsPage extends BaseClass{
 
 	@FindBy(xpath = "//div[@id='square_Details']//h1") private WebElement ProductName;
 	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
+	@FindBy(xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> ProductColorList;
+	@FindBy(xpath = "//a[@id='cart-panel-button-0']") private WebElement ClickHereToBuyButton;
 
+	
 	public NaptolProductDetailsPage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);	
@@ -28,4 +31,24 @@ public class NaptolProductDetailsPage extends BaseClass{
 		String [] a = ProductPriceList.get(index).getText().split(" ");
 		return Double.parseDouble(removeComaFromString(a[0]));	
 	}
+	
+	public void SelectProductColor(int index)
+	{				
+		ProductColorList.get(index).click();	
+	}
+	
+	public int  getProductColorList()
+	{
+		return ProductColorList.size();
+	}
+			
+	
+	public void clickOnClickHereToBuyButton()
+	{
+			System.out.println("Run code here");
+			ClickHereToBuyButton.click();
+		
+	}
+	
+	
 }	
