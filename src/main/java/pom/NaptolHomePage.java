@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
 import utility.Parameterization;
 
 
@@ -24,13 +26,13 @@ public class NaptolHomePage extends BaseClass  {
 	@FindBy(xpath = "//section[@id='quickViewBox']") private WebElement QuickViewPopUp;
 	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
 	@FindBy(xpath = "//div[@id='productItem2']") private WebElement Product;
-	
+	@FindBy(xpath = "//select[@id='sortByFilter']") private WebElement SorbBy;
 	
 	public NaptolHomePage(WebDriver driver)
 	{
 		PageFactory.initElements(driver, this);	
 	}
-
+		
 	public void enterValidProductNameForSearch() throws EncryptedDocumentException, IOException
 	{	 
 		SearchBox.sendKeys(Parameterization.getStringData("Sheet1", 0, 0));		
@@ -51,7 +53,7 @@ public class NaptolHomePage extends BaseClass  {
 	{
 		return SearchResult.getText();
 	}
-		// change
+		
 	public void moveToShoppingCategories(WebDriver driver)
 	{			
 		Actions act = new Actions(driver);
@@ -59,7 +61,7 @@ public class NaptolHomePage extends BaseClass  {
 		act.perform();
 	}
 	
-	//29-11-2024 Change
+
 	public void moveToQuickView(WebDriver driver) 
 	{			
 		Actions act = new Actions(driver);
@@ -106,6 +108,21 @@ public class NaptolHomePage extends BaseClass  {
 		
 	}
 
+	public void clickOnSortby()
+	{
+		SorbBy.click();
+	}
 	
+	public String[] getProductsNameList() {
+		String[] nameList = new String[ProductNameList.size()];
+		
+		for(int i=0;i<ProductNameList.size();i++) {
+			nameList[i] =ProductNameList.get(i).getText();
+		}
+		
+		return nameList;
+		
+	}
 	
+		
 }

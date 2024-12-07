@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import junit.framework.Assert;
@@ -12,7 +13,7 @@ import pom.NaptolHomePage;
 import pom.NaptolProductDetailsPage;
 import pom.NaptolQuickViewPage;
 
-
+@Listeners(test.Listeners.class)
 public class NaptolHomePageTest extends BaseTest  {
 
 	@BeforeMethod
@@ -24,6 +25,7 @@ public class NaptolHomePageTest extends BaseTest  {
 	@Test
 	public void searchAValidProduct() throws EncryptedDocumentException, IOException
 	{
+		test = reports.createTest("searchAValidProduct");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
@@ -36,6 +38,7 @@ public class NaptolHomePageTest extends BaseTest  {
 	@Test
 	public void searchAInvalidProduct() throws EncryptedDocumentException, IOException
 	{
+		test = reports.createTest("searchAInvalidProduct");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterInvalidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
@@ -48,6 +51,7 @@ public class NaptolHomePageTest extends BaseTest  {
 	@Test
 	public void verifyOnClickingShoppingCategories()
 	{
+		test = reports.createTest("verifyOnClickingShoppingCategories");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.moveToShoppingCategories(driver);
 		Assert.assertTrue(naptolHomePage.verifyingShoppingcategoriesMenu());
@@ -58,6 +62,7 @@ public class NaptolHomePageTest extends BaseTest  {
 	@Test
 	public void VerifyIfProdutDetailsAreCorrcetIfViewInQuickView() throws EncryptedDocumentException, IOException 
 	{
+		test = reports.createTest("VerifyIfProdutDetailsAreCorrcetIfViewInQuickView");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
@@ -83,6 +88,7 @@ public class NaptolHomePageTest extends BaseTest  {
 	@Test
 	public void VerifyProductDetailsAreCorrectIfViewInNewTab() throws EncryptedDocumentException, IOException
 	{
+		test = reports.createTest("VerifyProductDetailsAreCorrectIfViewInNewTab");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
@@ -99,6 +105,16 @@ public class NaptolHomePageTest extends BaseTest  {
 	}
 	
 	
-	
+	@Test
+	public void VerifySortFeature() throws EncryptedDocumentException, IOException
+	{
+		test = reports.createTest("VerifySortFeature");
+		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
+		naptolHomePage.enterValidProductNameForSearch();
+		naptolHomePage.clickOnSearchButton();
+		naptolHomePage.clickOnSortby();
+			
+		
+	}
 	
 }

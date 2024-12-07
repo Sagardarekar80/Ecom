@@ -5,8 +5,8 @@
     <classes>
       <class name="test.NaptolCartPageTest">
         <methods>
-          <include name="VerifyRemovingProductFromCart"/>
           <include name="launchApplication"/>
+          <include name="verifyAddingMultipleProductToCart"/>
         </methods>
       </class> <!-- test.NaptolCartPageTest -->
     </classes>

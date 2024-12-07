@@ -13,7 +13,7 @@ public class NaptolQuickViewPage extends BaseClass{
 	@FindBy(xpath = "//span[@class='offer-price']") private List<WebElement> ProductPriceList;
 	@FindBy(xpath = "//ul[@class='sizeBox clearfix']//li") private List<WebElement> ProductColorList;
 	@FindBy(xpath = "//a[@id='cart-panel-button-0']") private WebElement ClickHereToBuyButton;
-	
+	@FindBy(xpath = "(//button[@title='Close'])[2]") private WebElement CloseButton;
 	
 	public NaptolQuickViewPage(WebDriver driver)
 	{
@@ -39,15 +39,24 @@ public class NaptolQuickViewPage extends BaseClass{
 	{
 		return ProductColorList.size();
 	}
-	
-	
-	
-	
+				
 	public void clickOnClickHereToBuyButton()
 	{
-			System.out.println("Run code here");
-			ClickHereToBuyButton.click();
 		
+		if(ProductColorList.size()>0)	
+		{
+			ProductColorList.get(1).click();
+			ClickHereToBuyButton.click();
+		}
+		else
+			ClickHereToBuyButton.click();
 	}
+	
+	public void clickOnCloseButton()
+	{
+		CloseButton.click();
+	}
+	
+	
 	
 }

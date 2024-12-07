@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import junit.framework.Assert;
@@ -11,7 +12,7 @@ import pojo.Browser;
 import pom.NaptolCartPage;
 import pom.NaptolHomePage;
 import pom.NaptolProductDetailsPage;
-
+@Listeners(test.Listeners.class)
 public class NaptolProductDetailsPageTest extends BaseTest {
 
 	@BeforeMethod
@@ -23,6 +24,7 @@ public class NaptolProductDetailsPageTest extends BaseTest {
 	@Test
 	public void verifyAddProductToCartUsingProductDetailPage() throws EncryptedDocumentException, IOException
 	{
+		test = reports.createTest("verifyAddProductToCartUsingProductDetailPage");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();

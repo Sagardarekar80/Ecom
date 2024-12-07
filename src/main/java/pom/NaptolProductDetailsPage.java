@@ -45,10 +45,11 @@ public class NaptolProductDetailsPage extends BaseClass{
 	
 	public void clickOnClickHereToBuyButton()
 	{
-			System.out.println("Run code here");
 			ClickHereToBuyButton.click();
 		
 	}
+	
+	
 	
 	
 }	
