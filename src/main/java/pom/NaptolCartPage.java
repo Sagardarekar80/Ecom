@@ -1,9 +1,7 @@
 package pom;
 
-import java.io.IOException;
 import java.util.List;
 
-import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,15 +9,12 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import utility.Parameterization;
-
 public class NaptolCartPage extends BaseClass{
 
 	
 	@FindBy(xpath = "//ul[@id='cartData']//h2")private WebElement CartProductName;
 	@FindBy(xpath = "//div[@id='cartItems']//h2")private List<WebElement> AddedProductToCart;
 	@FindBy(xpath = "//span[@class='font-bold-imp']")private WebElement CartItemCount;
-//	@FindBy(xpath = "//div[@id='cartItems']//ul")private List<WebElement> CartProductNameList;
 	@FindBy(xpath = "//p[@class='chintu']//a")private List<WebElement> removeBtm;
 	@FindBy(xpath = "//a[@onclick='cart.remove(596086614)']")private WebElement removeBtm1;
 	@FindBy(xpath = "(//button[@title='Close'])[4]")private WebElement CloseButton;

@@ -95,7 +95,7 @@ public class NaptolHomePageTest extends BaseTest  {
 		naptolHomePage.clickOnSearchButton();
 		String ProductName =  naptolHomePage.getProductName(1);
 		
-		String title = naptolHomePage.clickOnProduct(driver);
+		naptolHomePage.clickOnProduct(driver);
 		Double ProductPrice = naptolHomePage.getProductPrice(1);
 		
 		NaptolProductDetailsPage naptolProductDetailsPage = new NaptolProductDetailsPage(driver);

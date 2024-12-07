@@ -22,8 +22,7 @@ public class SortPageTest extends BaseTest{
 	{
 		driver = Browser.openBrowser();				
 	}
-	
-	
+		
 	@Test
 	public void VerifySortFeature() throws EncryptedDocumentException, IOException, InterruptedException
 	{
@@ -36,7 +35,7 @@ public class SortPageTest extends BaseTest{
 		
 		SortPage sortPage = new SortPage(driver);
 		sortPage.clickOnSort();
-		sortPage.getSelectedOption(3);
+		sortPage.getSelectedOption(3); //Most Expensive
 		Thread.sleep(5000);
 		double priceList[] = sortPage.getProducPriceList();
 		
@@ -48,7 +47,7 @@ public class SortPageTest extends BaseTest{
 			}
 		}	
 			Thread.sleep(5000);
-			sortPage.getSelectedOption(4);	
+			sortPage.getSelectedOption(4);	//Cheapest
 			
 			for(int i=priceList.length-1;i>=0;i--)
 			{
@@ -57,18 +56,27 @@ public class SortPageTest extends BaseTest{
 			}
 			
 			Thread.sleep(5000);
-			sortPage.getSelectedOption(1);
+			sortPage.getSelectedOption(1); //New Arrivals
 			boolean result =sortPage.isNewFlagDisplayed();
 			Assert.assertTrue(result);
 			
-			sortPage.getSelectedOption(5);
+			sortPage.getSelectedOption(5); //Relevance
 			Thread.sleep(3000);
 			String newArrivalSortProductNameList[]=sortPage.getProductsNameList();
 			for(int i =0; i<newArrivalSortProductNameList.length;i++) {
 				if(beforeSortProductNameList[i]!=newArrivalSortProductNameList[i]) {
 					Assert.assertTrue(beforeSortProductNameList[i]!=newArrivalSortProductNameList[i]);
 				}
-			}												
+			}	
+			
+			sortPage.getSelectedOption(0); //Most Popular
+			Thread.sleep(3000);
+			String MostPopularSortProductNameList[]=sortPage.getProductsNameList();
+			for(int i =0; i<MostPopularSortProductNameList.length;i++) {
+				if(beforeSortProductNameList[i]!=MostPopularSortProductNameList[i]) {
+					Assert.assertTrue(beforeSortProductNameList[i]!=MostPopularSortProductNameList[i]);
+				}
+			}				
 		}	
 	
 	

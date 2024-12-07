@@ -11,8 +11,7 @@ public class BaseClass {
 	{
 		String c = "";
 		for(int i=0;i<s.length();i++)
-		{
-			
+		{			
 			if(s.charAt(i)!=',')
 			{
 				c = c+s.charAt(i);
@@ -48,11 +47,7 @@ public class BaseClass {
 			title = driver.getTitle();
 		}
 		return title;
-	}
-	
-	
-	
-	
+	}	
 }
 
 

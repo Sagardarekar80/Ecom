@@ -64,7 +64,7 @@ public class NaptolCartPageTest extends BaseTest {
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
 		naptolHomePage.moveToProduct(driver, 1);
-		boolean result = naptolHomePage.clickOnQuickView(1);
+		naptolHomePage.clickOnQuickView(1);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		if (naptolQuickViewPage.getProductColorList() > 0) {
 			naptolQuickViewPage.SelectProductColor(1);
@@ -97,7 +97,7 @@ public class NaptolCartPageTest extends BaseTest {
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
 		naptolHomePage.moveToProduct(driver, 6);
-		boolean result = naptolHomePage.clickOnQuickView(6);
+		naptolHomePage.clickOnQuickView(6);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		naptolQuickViewPage.clickOnClickHereToBuyButton();
 
@@ -105,11 +105,11 @@ public class NaptolCartPageTest extends BaseTest {
 
 		int ListCount = naptolCartPage.getCartItemCount();
 
-		String RemovedProductname = naptolCartPage.clickOnRemoveBtm(0);
-		// Wait for the product to be removed from the cart
+		naptolCartPage.clickOnRemoveBtm(0);
+		
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//div[@id='cartItems']")));
-		// Check that the cart is empty
+		
 		int AfterRemoveListCount = naptolCartPage.getCartItemCount();
 		Assert.assertTrue(ListCount > AfterRemoveListCount);
 

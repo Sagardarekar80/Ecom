@@ -52,7 +52,7 @@ public class SortPage extends BaseClass{
 	
 	public boolean isNewFlagDisplayed()
 	{
-		String[] New = new String [NewFlag.size()];
+	//	String[] New = new String [NewFlag.size()];
 		for(int i=0;i<NewFlag.size();i++)
 		{
 			if(NewFlag.get(i).isDisplayed())

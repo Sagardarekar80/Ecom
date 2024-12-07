@@ -30,7 +30,7 @@ public class NaptolProductDetailsPageTest extends BaseTest {
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
 		
-		String title = naptolHomePage.clickOnProduct(driver);
+		naptolHomePage.clickOnProduct(driver);
 		
 		NaptolProductDetailsPage naptolProductDetailsPage = new NaptolProductDetailsPage(driver);
 		String ProductName =  naptolProductDetailsPage.getProductName();

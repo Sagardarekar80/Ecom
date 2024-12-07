@@ -31,7 +31,7 @@ public class NaptolQuickViewTest extends BaseTest{
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();						
 		naptolHomePage.moveToProduct(driver,1);		
-		boolean result = naptolHomePage.clickOnQuickView(1);
+		naptolHomePage.clickOnQuickView(1);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 		String ProductName =  naptolQuickViewPage.getProductName();
 		
