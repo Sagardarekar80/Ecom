@@ -7,7 +7,7 @@ import org.apache.poi.EncryptedDocumentException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -123,6 +123,7 @@ public class NaptolCartPageTest extends BaseTest {
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();
 		naptolHomePage.moveToProduct(driver, 1);
+		Thread.sleep(5000);
 		naptolHomePage.clickOnQuickView(1);
 		NaptolQuickViewPage naptolQuickViewPage = new NaptolQuickViewPage(driver);
 
@@ -164,8 +165,15 @@ public class NaptolCartPageTest extends BaseTest {
 		double TA= naptolCartPage.getTotalAmount();		
 		Assert.assertEquals(AM, TA);
 		
+	}	
+	
+	@AfterMethod
+	public void closeBrowser()
+	{
+		driver.close();
 	}
 	
-	
-	
 }
+
+
+

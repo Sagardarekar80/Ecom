@@ -3,6 +3,7 @@ package test;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -53,6 +54,10 @@ public class NaptolProductDetailsPageTest extends BaseTest {
 		Assert.assertEquals(ProductName,CartProductName);					
 		
 	}
-	
+	@AfterMethod
+	public void closeBrowser()
+	{
+		driver.close();
+	}
 	
 }

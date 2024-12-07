@@ -3,6 +3,7 @@ package test;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -25,6 +26,7 @@ public class NaptolQuickViewTest extends BaseTest{
 	@Test
 	public void verifyAddProductToCartUsingQuickView() throws EncryptedDocumentException, IOException
 	{
+		test = reports.createTest("verifyAddProductToCartUsingQuickView");
 		NaptolHomePage naptolHomePage = new NaptolHomePage(driver);
 		naptolHomePage.enterValidProductNameForSearch();
 		naptolHomePage.clickOnSearchButton();						
@@ -44,7 +46,12 @@ public class NaptolQuickViewTest extends BaseTest{
 		}		
 		NaptolCartPage naptolCartPage = new NaptolCartPage(driver);		
 		String CartProductName = naptolCartPage.getCartProductname();		
-		Assert.assertEquals(ProductName,CartProductName);				
-		
+		Assert.assertEquals(ProductName,CartProductName);						
+	}
+	
+	@AfterMethod
+	public void closeBrowser()
+	{
+		driver.close();
 	}
 }
